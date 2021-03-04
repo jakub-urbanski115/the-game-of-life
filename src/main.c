@@ -18,7 +18,8 @@ int main(int argc, char **argv)
 	char *in = NULL;
 	char *out = NULL;
 
-	end = malloc(10*sizeof(int));
+	end =(int*)malloc(10*sizeof(int));
+	
 	while((opt = getopt (argc, argv, "g:s:e:f:b")) != -1 )
 	{
 		switch (opt)
@@ -46,20 +47,13 @@ int main(int argc, char **argv)
 	lend= sizeof(end);
 	qsort(end,lend,sizeof(int), compere);
 
-	//world = dane(FILEIN)
-	if(metodaspr == 1)
-	{
-		int(*sprfunk)()	= moon;
-	}
-	else
-	{
-		int(*sprfunk)()	= vonn;	
-	}
+	//wrld = dane(FILEIN)
+	
 
 	for(int i=0; i < lg;i++)
 	{
 	int j= 0;
-		sprfunk();
+	wrld->world = spr(metodaspr,wrld);
 		if(i==end[j])
 		{
 			//savestan
