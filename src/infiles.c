@@ -76,6 +76,7 @@ wrld * copywrld(wrld * w){
 
 
 void freewrld(wrld * w){
+
 	free(w->world);
 	free(w);	
 }

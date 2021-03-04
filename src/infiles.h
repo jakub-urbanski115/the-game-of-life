@@ -11,6 +11,7 @@ typedef struct {
 	int **world;
 } wrld;
 
+
 wrld * make(char* filename);
 int check(char* filename);
 wrld * copywrld(wrld * w);
