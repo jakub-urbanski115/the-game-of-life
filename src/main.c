@@ -3,6 +3,7 @@
 #include <unistd.h>
 
 #include "spr.h"
+#include "infiles.h"
 
 int compere (const void *a,const void *b)	
 {
@@ -47,13 +48,13 @@ int main(int argc, char **argv)
 	lend= sizeof(end);
 	qsort(end,lend,sizeof(int), compere);
 
-	//wrld = dane(FILEIN)
+	wrld *wld=NULL;
+	wld = make(in);
 	
-
 	for(int i=0; i < lg;i++)
 	{
 	int j= 0;
-	wrld->world = spr(metodaspr,wrld);
+	spr(metodaspr,wld);
 		if(i==end[j])
 		{
 			//savestan
@@ -61,7 +62,7 @@ int main(int argc, char **argv)
 		}
 		//grafika
 	}
-
+	freewrld(wld);
 	return 0;
 }
 

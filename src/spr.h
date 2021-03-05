@@ -1,12 +1,13 @@
 #ifndef SPR_H
 #define SPR_H
+#include "infiles.h"
 #include <stdlib.h>
 #include <stdio.h>
-int(*sprfunk[])(int i,int j, wrld)={moon,vonn};
-int **spr(int metodaspr, wrld);
-int moon(int i, int j, wrld);
-int vonn(int i, int j, wrld);
-int add(int i, int j, int k, int l,  wrld);
+int moon(int i, int j, wrld * wld);
+int vonn(int i, int j, wrld * wld);
+int(*sprfunk[])(int i,int j, wrld * wld)={moon,vonn};
+void spr(int metodaspr, wrld * wld);
+int add(int i, int j, int k, int l, wrld * wld);
 int rule1(int nlive, int whatmi);
 
 #endif
