@@ -31,7 +31,7 @@ for(int k=i-1; k < i + 2; k++)
 		nlive+=add(i,j,k,l,wld);
 	}
 }
-return rule1(nlive, wld->world[i][j]);
+return (*rules[0])(nlive, wld->world[i][j]);
 }
 
 int vonn(int i,int j, wrld * wld)
@@ -41,7 +41,7 @@ int nlive=0;
 	nlive+=add(i,j,i-1,j,wld);
 	nlive+=add(i,j,i,j+1,wld);
 	nlive+=add(i,j,i,j-1,wld);
-return rule1(nlive, wld->world[i][j]);
+return (*rules[0])(nlive, wld->world[i][j]);
 }
 
 int add(int i, int j, int k, int l, wrld * wld)
