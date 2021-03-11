@@ -1,7 +1,7 @@
 #include "spr.h"
 
 
-int rule1 (int nlive, int whatmi)
+int rule1(int nlive, int whatmi)
 {
 	if(whatmi==1)
 	{

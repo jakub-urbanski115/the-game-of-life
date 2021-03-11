@@ -3,6 +3,11 @@
 
 void spr(int metodaspr,int ruler, wrld * wld )
 {
+sprfunk[0]=moon;
+sprfunk[1]=vonn;
+
+rules[0]=rule1;
+
 int x = wld->c;
 int y = wld->r;
 
@@ -18,8 +23,9 @@ for (int i=0; i<x; i++)
 freewrld(new);//zwalnianie pamieci
 }
 
-int moor(int ruler, int i,int j, wrld *wld) 
+int moon(int ruler, int i,int j, wrld *wld) 
 {
+//int x=0;
 int nlive=0;
 for(int k=i-1; k < i + 2; k++)
 {
@@ -29,6 +35,7 @@ for(int k=i-1; k < i + 2; k++)
 	}
 }
 return (*rules[ruler])(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
+//x = rule1(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
 }						// i stan obecnej komorki swiata 
 
 int vonn(int ruler, int i,int j, wrld * wld)
@@ -38,7 +45,7 @@ int nlive=0;
 	nlive+=add(i,j,i-1,j,wld);
 	nlive+=add(i,j,i,j+1,wld);
 	nlive+=add(i,j,i,j-1,wld);
-return (*rules[ruler])(nlive, wld->world[i][j]);
+return (*rules[ruler])(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
 }
 
 int add(int i, int j, int k, int l, wrld * wld)
