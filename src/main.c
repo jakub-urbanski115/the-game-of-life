@@ -4,13 +4,13 @@
 
 #include "spr.h"
 #include "infiles.h"
-
+#include "outfiles.h"
 void help ()
 {
 	char *guide =
 "GUIDE: %s 	-g [liczba generacji]\n"
 "		-s [rodzaj metody sprawdzania sasiedztwa]\n"
-"		-e [nr generacji do zapisania mozna podac wiele kazdy z prefixem (-e)]\n"
+"		-e [nr generacji do zapisania mozna podac max 10 kazdy z prefixem (-e)]\n"
 "		-r [rodzaj zasad]\n"	
 "		-b [plik startowy z ...]\n"
 "		-f [folder wyjsciowy]\n"
@@ -26,19 +26,17 @@ int compere (const void *a,const void *b)
 int main(int argc, char **argv)
 {
 	int opt;
-	int lg=1;
+	int lg=2;
 	int ruler = 0;
 	int metodaspr = 0;
 	int lend=0;
-	int *end;
+	int end[10]={0};
 	char *in = NULL;
 	char *out = NULL;
 	
 	if(argc<2)
-		help;
+		help();
 
-	end =(int*)malloc(10*sizeof(int));
-	
 	while((opt = getopt (argc, argv, "g:s:e:r:b:f")) != -1 )
 	{
 		switch (opt)
@@ -67,8 +65,9 @@ int main(int argc, char **argv)
 		}
 	}
 	lend= sizeof(end);
+	end[0]=lg;
 	qsort(end,lend,sizeof(int), compere);//posortowanie wybranych gen do zapisu
-
+	
 	wrld *wld=NULL;
 	wld = make(in);//allocation of the world
 	
@@ -78,7 +77,7 @@ int main(int argc, char **argv)
 	spr(metodaspr,ruler,wld);//glowna czesc ktora przetwarza swiat
 		if(i==end[j])
 		{
-			//savestan
+			printIt(wld,out,i);//savestan
 			j++;
 		}
 		//grafika

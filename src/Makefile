@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall
-OBJECTS = main.o spr.o infiles.o rules.o
+OBJECTS = main.o spr.o infiles.o outfiles.o rules.o
 TARGET = life 
 
 all: $(TARGET)
