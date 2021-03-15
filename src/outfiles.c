@@ -1,7 +1,7 @@
 #include "outfiles.h"
 
 void printIt(wrld * map, char* dir, int iter){ // zapis konkretnej iteracji do pliku w podanym folderze "dir"
-	char *file = malloc(strlen(dir) + strlen("zapis_iteracji_.txt") + 3);
+	char *file = malloc((strlen(dir) + strlen("zapis_iteracji_.txt") + 4)*sizeof(char));
 	file = strcpy(file, dir);
 	file = strcat(file, "/zapis_iteracji_");
 	int x = iter;
