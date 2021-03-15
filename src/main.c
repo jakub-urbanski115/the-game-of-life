@@ -84,7 +84,7 @@ int main(int argc, char **argv)
 			j++;
 		}
 		
-		//grafika
+	printPBM(wld,out,i+1);	
 	}
 	freewrld(wld);
 	return 0;
