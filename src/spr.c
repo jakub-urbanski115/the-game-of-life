@@ -1,21 +1,22 @@
 #include "spr.h"
 
+int (*sprfunk[])(int, int, int, wrld*)={moon,vonn} ;
 
 void spr(int metodaspr,int ruler, wrld * wld )
 {
-sprfunk[0]=moon;
-sprfunk[1]=vonn;
+//sprfunk[0]=moon;
+//sprfunk[1]=vonn;
 
 rules[0]=rule1;
 
-int x = wld->c;
-int y = wld->r;
+int c = wld->c;
+int r = wld->r;
 
 wrld * new = copywrld(wld);//kopiowanie struct world
 
-for (int i=0; i<x; i++)
+for (int i=0; i<r; i++)
 {
-	for(int j=0; j < y; j++)
+	for(int j=0; j < c; j++)
 	{
 		wld->world[i][j]=(*sprfunk[metodaspr])(ruler,i,j,new);//wybor funkicji z metoda sprawdzania
 	}
@@ -27,11 +28,11 @@ int moon(int ruler, int i,int j, wrld *wld)
 {
 //int x=0;
 int nlive=0;
-for(int k=i-1; k < i + 2; k++)
+for(int l=i-1; l < i + 2; l++)
 {
-	for(int l = j - 1; l < j + 2; j++)
+	for(int k = j - 1; k < j + 2; k++)
 	{
-		nlive+=add(i,j,k,l,wld);//funkcja zawierajaca if-y
+		nlive+=add(i,j,l,k,wld);//funkcja zawierajaca if-y
 	}
 }
 return (*rules[ruler])(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
@@ -48,12 +49,12 @@ int nlive=0;
 return (*rules[ruler])(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
 }
 
-int add(int i, int j, int k, int l, wrld * wld)
+int add(int i, int j, int l, int k, wrld * wld)
 {
 int n=0;
-	if(k != i && l != j && k >= 0 && k < wld->c && l >= 0 && l < wld->r )//zachowanie na krawedzi 
+	if(k != j && l != i && k >= 0 && k < wld->c && l >= 0 && l < wld->r )//zachowanie na krawedzi 
 	{
-		if(wld->world[k][l]==1)
+		if(wld->world[l][k]==1)
 		n=1;
 	}
 return n;
