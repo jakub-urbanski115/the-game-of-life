@@ -7,6 +7,8 @@
 #include "infiles.h"
 
 void printIt(wrld * map, char* dir, int iter);
+void printPBM(wrld * map, char* dir, int iter);
+
 
 
 #endif
