@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	if(argc<2)
 		help();
 
-	while((opt = getopt (argc, argv, "g:s:e:r:b:f")) != -1 )
+	while((opt = getopt (argc, argv, "g:s:e:r:b:f:")) != -1 )
 	{
 		switch (opt)
 		{

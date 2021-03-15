@@ -36,7 +36,6 @@ for(int l=i-1; l < i + 2; l++)
 	}
 }
 return (*rules[ruler])(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
-//x = rule1(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
 }						// i stan obecnej komorki swiata 
 
 int vonn(int ruler, int i,int j, wrld * wld)
@@ -52,10 +51,14 @@ return (*rules[ruler])(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe 
 int add(int i, int j, int l, int k, wrld * wld)
 {
 int n=0;
-	if(k != j && l != i && k >= 0 && k < wld->c && l >= 0 && l < wld->r )//zachowanie na krawedzi 
-	{
-		if(wld->world[l][k]==1)
-		n=1;
+	if(k == j && l == i)
+	return 0;
+	else{
+		if(k >= 0 && k < wld->c && l >= 0 && l < wld->r )//zachowanie na krawedzi 
+		{
+			if(wld->world[l][k]==1)
+			n=1;
+		}
 	}
 return n;
 }
