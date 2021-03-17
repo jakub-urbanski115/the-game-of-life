@@ -73,6 +73,8 @@ int main(int argc, char **argv)
 	wrld *wld=NULL;
 	wld = make(in);//allocation of the world
 	
+	printPBM(wld,out,0);	
+
 	for(int i=0; i < lg;i++)
 	{
 	int j= 10-lend;
@@ -80,7 +82,7 @@ int main(int argc, char **argv)
 	spr(metodaspr,ruler,wld);//glowna czesc ktora przetwarza swiat
 		if(i==(end[j]-1))
 		{
-			printIt(wld,out,i);//savestan
+			printIt(wld,out,i+1);//savestan
 			j++;
 		}
 		
