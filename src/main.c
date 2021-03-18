@@ -72,7 +72,10 @@ int main(int argc, char **argv)
 	
 	wrld *wld=NULL;
 	wld = make(in);//allocation of the world
-	
+
+	if(wld==NULL)
+	return 1;
+
 	for(int i=0; i < lg;i++)
 	{
 	int j= 10-lend;
@@ -83,8 +86,8 @@ int main(int argc, char **argv)
 			printIt(wld,out,i);//savestan
 			j++;
 		}
-		
-		//grafika
+				
+		printPBM(wld,out,i);//grafika
 	}
 	freewrld(wld);
 	return 0;
