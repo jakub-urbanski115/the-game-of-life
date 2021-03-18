@@ -73,6 +73,9 @@ int main(int argc, char **argv)
 	wrld *wld=NULL;
 	wld = make(in);//allocation of the world
 	
+	if(wld == NULL)
+		return 1;
+
 	printPBM(wld,out,0);	
 
 	for(int i=0; i < lg;i++)
