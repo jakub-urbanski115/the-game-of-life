@@ -1,13 +1,14 @@
 #include "spr.h"
 
-int (*sprfunk[])(int, int, int, wrld*)={moon,vonn} ;
-
+int (*sprfunk[])(int, int, int, wrld*)={moon,vonn,naX} ;
+int (*rules[])(int,int)={rule1,rule2} ;
 void spr(int metodaspr,int ruler, wrld * wld )
 {
 //sprfunk[0]=moon;
 //sprfunk[1]=vonn;
 
-rules[0]=rule1;
+//rules[0]=rule1;
+//rules[1]=rule2;
 
 int c = wld->c;
 int r = wld->r;
@@ -22,6 +23,15 @@ for (int i=0; i<r; i++)
 	}
 }
 freewrld(new);//zwalnianie pamieci
+}
+int naX(int ruler, int i,int j, wrld *wld) 
+{
+int nlive = 0;
+	nlive+=add(i,j,i+1,j+1,wld);
+	nlive+=add(i,j,i+1,j-1,wld);
+	nlive+=add(i,j,i-1,j+1,wld);
+	nlive+=add(i,j,i-1,j-1,wld);
+return (*rules[ruler])(nlive, wld->world[i][j]);//wybor zasad przekazuje liczbe zywych sasiadow
 }
 
 int moon(int ruler, int i,int j, wrld *wld) 

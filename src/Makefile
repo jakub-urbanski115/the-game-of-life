@@ -28,3 +28,5 @@ $(TARGET): $(OBJECTS)
 
 clean:
 	-rm -f $(OBJECTS) $(TARGET)
+clean2: 
+	-rm -f $(OBJECTS) $(TARGET) ~/JIMP2/pro1/output/pic* ~/JIMP2/pro1/output/zapis*
