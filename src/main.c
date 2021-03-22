@@ -14,6 +14,7 @@ void help ()
 "		-r [rodzaj zasad]\n"	
 "		-b [plik startowy z ...]\n"
 "		-f [folder wyjsciowy]\n"
+"		-c [0 marte 1 zywe krawedzie]\n"
 "\n";
 	fprintf(stderr,"%s",guide);
 	exit(EXIT_FAILURE);
@@ -33,11 +34,12 @@ int main(int argc, char **argv)
 	int end[11]={0};
 	char *in = NULL;
 	char *out = NULL;
+	int c = 0;
 	int tmp=0;	
 	if(argc<2)
 		help();
 
-	while((opt = getopt (argc, argv, "g:s:e:r:b:f:")) != -1 )
+	while((opt = getopt (argc, argv, "g:s:e:r:b:f:c:")) != -1 )
 	{
 		switch (opt)
 		{
@@ -65,6 +67,9 @@ int main(int argc, char **argv)
 		case 'f'://folder wyjsciowy
 			out = optarg;
 		break;
+		case 'c' :
+			c = atoi(optarg);	
+		break;
 		}
 	}
 	end[lend]=lg;
@@ -80,7 +85,7 @@ int main(int argc, char **argv)
 	{
 	int j= 10-lend;
 	
-	spr(metodaspr,ruler,wld);//glowna czesc ktora przetwarza swiat
+	spr(metodaspr,ruler,c,wld);//glowna czesc ktora przetwarza swiat
 		if(i==(end[j]-1))
 		{
 			printIt(wld,out,i);//savestan
