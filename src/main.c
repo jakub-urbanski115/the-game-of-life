@@ -73,8 +73,11 @@ int main(int argc, char **argv)
 	wrld *wld=NULL;
 	wld = make(in);//allocation of the world
 
-	if(wld==NULL)
-	return 1;
+	
+	if(wld == NULL)
+		return 1;
+
+	printPBM(wld,out,0);	
 
 	for(int i=0; i < lg;i++)
 	{
@@ -83,11 +86,11 @@ int main(int argc, char **argv)
 	spr(metodaspr,ruler,wld);//glowna czesc ktora przetwarza swiat
 		if(i==(end[j]-1))
 		{
-			printIt(wld,out,i);//savestan
+			printIt(wld,out,i+1);//savestan
 			j++;
 		}
-				
-		printPBM(wld,out,i);//grafika
+		
+	printPBM(wld,out,i+1);	
 	}
 	freewrld(wld);
 	return 0;

@@ -1,19 +1,27 @@
 #include "outfiles.h"
+#include <unistd.h>
+#include <limits.h>
 
 void printIt(wrld * map, char* dir, int iter){ // zapis konkretnej iteracji do pliku w podanym folderze "dir"
+	if(dir == NULL){
+		char cdir[PATH_MAX];
+		getcwd(cdir, sizeof(cdir));
+		dir = cdir;
+	}
+
 	char *file = malloc((strlen(dir) + strlen("zapis_iteracji_.txt") + 4)*sizeof(char));
-	file = strcpy(file, dir);
-	file = strcat(file, "/zapis_iteracji_");
+	strcpy(file, dir);
+	strcat(file, "/zapis_iteracji_");
 	int x = iter;
 	int d = 0;
 	while( x < 0){ // sprawdzenie ile cyfr ma iteracja, zeby zaalokowac pamiec na char c
 		x /= 10;
 		d++;
 	}
-	char *c = malloc(d);
+	char *c = malloc((d+3)*sizeof(char));
 	sprintf(c,"%d",iter);
-	file = strcat(file, c);
-	file = strcat(file, ".txt");
+	strcat(file, c);
+	strcat(file, ".txt");
 
 	FILE * out = fopen(file,"w");
 
@@ -30,19 +38,25 @@ void printIt(wrld * map, char* dir, int iter){ // zapis konkretnej iteracji do p
 
 
 void printPBM(wrld * map, char* dir, int iter){ 
-	char *file = malloc(strlen(dir) + strlen("pic_.pbm") + 3);
-	file = strcpy(file, dir);
-	file = strcat(file, "/pic_");
+	if(dir == NULL){
+		char cdir[PATH_MAX];
+		getcwd(cdir, sizeof(cdir));
+		dir = cdir;
+	}
+
+	char *file = malloc(strlen(dir) + strlen("pic_.pbm") + 4);
+	strcpy(file, dir);
+	strcat(file, "/pic_");
 	int x = iter;
 	int d = 0;
 	while( x < 0){ 
 		x /= 10;
 		d++;
 	}
-	char *c = malloc(d);
+	char *c = malloc((d+3)*sizeof(char));
 	sprintf(c,"%d",iter);
-	file = strcat(file, c);
-	file = strcat(file, ".pbm");
+	strcat(file, c);
+	strcat(file, ".pbm");
 
 	FILE * out = fopen(file,"w");
 
