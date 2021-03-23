@@ -15,11 +15,13 @@ wrld * make(char* filename){
 			for(int j = 0; j < new_wrld->c; j++)
 				fscanf(fin, "%d", &new_wrld->world[i][j]);
 
+		fclose(fin);
 		return new_wrld;
 	}
 
 	else{
 	        // w mainie, jesli new_wrld == NULL to koniec programu :(	
+		free(new_wrld);
 		return NULL;  
 	}
 }
@@ -40,12 +42,14 @@ int check(char* filename){
 		while(fscanf(fin, "%d", &x) == 1){
 			if(x != 0 && x != 1){
 				fprintf(stderr,"Niewlasciwe dane w pliku (powinny byc zera i jedynki!)\n");
+				fclose(fin);
 				return 1;
 			}
 			suma++;
 		}
 		if(suma != r*c){
 			fprintf(stderr,"Liczba kolumn i wierszy nie zgadza sie z iloscia danych\n");
+			fclose(fin);
 			return 1;
 		}
 	}
@@ -53,7 +57,8 @@ int check(char* filename){
 		fprintf(stderr,"Nie mozna odczytac pliku o podanej nazwie\n");
 		return 1;
 	}
-
+	
+	fclose(fin);
 	return 0;
 }
 
@@ -78,7 +83,8 @@ wrld * copywrld(wrld * w){
 
 
 void freewrld(wrld * w){
-
+	for(int i = 0; i < w->r; i++)
+		free(w->world[i]);
 	free(w->world);
 	free(w);	
 }
