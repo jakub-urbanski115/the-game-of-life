@@ -18,7 +18,7 @@ void printIt(wrld * map, char* dir, int iter){ // zapis konkretnej iteracji do p
 		x /= 10;
 		d++;
 	}
-	char *c = malloc(d);
+	char *c = malloc((d+3)*sizeof(char));
 	sprintf(c,"%d",iter);
 	strcat(file, c);
 	strcat(file, ".txt");
@@ -44,7 +44,7 @@ void printPBM(wrld * map, char* dir, int iter){
 		dir = cdir;
 	}
 
-	char *file = malloc(strlen(dir) + strlen("pic_.pbm") + 3);
+	char *file = malloc(strlen(dir) + strlen("pic_.pbm") + 4);
 	strcpy(file, dir);
 	strcat(file, "/pic_");
 	int x = iter;
@@ -53,7 +53,7 @@ void printPBM(wrld * map, char* dir, int iter){
 		x /= 10;
 		d++;
 	}
-	char *c = malloc(d);
+	char *c = malloc((d+3)*sizeof(char));
 	sprintf(c,"%d",iter);
 	strcat(file, c);
 	strcat(file, ".pbm");
