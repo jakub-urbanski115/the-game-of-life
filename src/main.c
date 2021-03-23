@@ -7,8 +7,8 @@
 #include "outfiles.h"
 void help ()
 {
-	char *guide =
-"GUIDE: %s 	-g [liczba generacji są numerowane  0 - 'N' ]\n\n"
+	const char *guide =
+"GUIDE:  	-g [liczba generacji są numerowane  0 - 'N' ]\n\n"
 "		-e [nr generacji do zapisania mozna podac max 10]\n\n"
 "		-f [scierzka folderu wyjsciowego]\n\n"
 "		-c [0 marte 1 zywe krawedzie]\n\n"
