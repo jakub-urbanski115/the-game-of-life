@@ -100,6 +100,18 @@ int main(int argc, char **argv)
 	printPBM(wld,out,0);	
 //sprawdzenie czy plik wejsciowy jest poprawny
 
+	ge_GIF *gif = ge_new_gif("../output/life.gif",
+			wld->c, wld->r,
+			(uint8_t []) {
+				0xFF, 0xFF, 0xFF, // ustawienie 0 jako biały kolor
+				0x00, 0x00, 0x00, // ustawienie 1 jako czarny kolor
+			},
+			1,
+			0
+		);
+	
+	gif_add(wld,gif);
+
 //petla po generacjach
 	for(int i=0; i < lg;i++)
 	{
@@ -111,10 +123,12 @@ int main(int argc, char **argv)
 			printIt(wld,out,i+1);//quick save
 			j++;
 		}
-				
+		
+		gif_add(wld,gif);//zapis stanu swiata do gifa		
 		printPBM(wld,out,i+1);//generacja grafiki
 	}
 	freewrld(wld);//zwolnij swiat
+	ge_close_gif(gif);//zwolnij gif
 	return 0;
 }
 

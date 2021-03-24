@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall
-OBJECTS = main.o spr.o infiles.o outfiles.o rules.o
+OBJECTS = main.o spr.o infiles.o outfiles.o rules.o gifenc.o
 TARGET = life 
 
 all: $(TARGET)
@@ -19,6 +19,9 @@ $(TARGET): $(OBJECTS)
 
 #rules.o: rules.c spr.h
 #	$(CC) $(CFLAGS) -c rules.c
+
+#gifenc.o: gifenc.c gifenc.h
+#	$(CC) $(CFLAGS) -c gifenc.c
 
 
 

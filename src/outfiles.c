@@ -72,3 +72,10 @@ void printPBM(wrld * map, char* dir, int iter){
 	free(file);
 }
 
+
+void gif_add(wrld * map, ge_GIF * gif){
+	for(int i = 0; i < map->r; i++)
+		for(int j = 0; j < map->c; j++)
+			gif->frame[map->c*i + j] = map->world[i][j];
+	ge_add_frame(gif,20);
+}
